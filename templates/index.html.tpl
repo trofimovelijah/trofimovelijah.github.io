@@ -447,8 +447,8 @@
         <div class="container">
             <div class="hero">
                 <div class="hero-content">
-                    <h1>Архитектура технических решений, ML и тестирование</h1>
-                    <p>Специализируюсь на проектировании масштабируемых систем, разработке машинного обучения и обеспечении качества ПО.</p>
+                    <h1>Трофимов Илья Юрьевич</h1>
+                    <p>Специализируюсь на системном анализе, проектировании масштабируемых решений и обеспечении качества ПО.</p>
                     <div class="hero-cta">
                         <a href="#projects" class="btn btn-primary">Посмотреть проекты</a>
                         <a href="#contact" class="btn btn-secondary">Связаться со мной</a>
@@ -457,11 +457,11 @@
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">{{PROJECTS_COUNT}}</div>
-                        <div class="stat-label">Проектов</div>
+                        <div class="stat-label">открытых проектов</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">7+</div>
-                        <div class="stat-label">Лет опыта</div>
+                        <div class="stat-number">безумное множество</div>
+                        <div class="stat-label">лет опыта</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">{{SKILLS_COUNT}}</div>
@@ -520,7 +520,7 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026. Все права защищены. Bauhaus дизайн.</p>
+        <p>&copy; 2026. Все права права. ~ Bauhaus дизайн.</p>
     </footer>
 
     <script>
