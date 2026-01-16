@@ -1,5 +1,6 @@
 # Структура репозитория
 
+```bash
 trofimovelijah.github.io/
 ├── .github/
 │   └── workflows/
@@ -15,4 +16,4 @@ trofimovelijah.github.io/
 │   └── generate.py             # Скрипт для генерации
 ├── README.md
 └── .gitignore
-
+```
