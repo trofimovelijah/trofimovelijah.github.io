@@ -1,0 +1,17 @@
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Можно игнорировать или коммитить index.html (смотри ниже)
+# index.html
+
