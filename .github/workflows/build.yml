@@ -35,6 +35,7 @@ jobs:
             echo "❌ ERROR: index.html was not generated!"
             exit 1
           fi
+          echo "✅ index.html generated successfully"
 
       - name: Check if index.html was modified
         id: check_changes
@@ -62,11 +63,11 @@ jobs:
           git push
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
