@@ -215,16 +215,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: center;
+            align-items: start;
         }
 
         .about-content h3 {
             font-size: 24px;
             margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .about-content p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: var(--color-text-muted);
             line-height: 1.8;
         }
@@ -241,6 +242,7 @@
             padding: 8px 16px;
             font-size: 14px;
             font-weight: 500;
+            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
@@ -259,6 +261,7 @@
             padding: 40px;
             transition: all 0.3s ease;
             cursor: pointer;
+            border-radius: 8px;
         }
 
         .project-card:hover {
@@ -298,6 +301,7 @@
             padding: 4px 10px;
             font-size: 12px;
             font-weight: 600;
+            border-radius: 3px;
         }
 
         .project-link {
@@ -327,6 +331,7 @@
             padding: 32px;
             text-align: center;
             transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
         .resource-card:hover {
@@ -397,6 +402,7 @@
             color: var(--color-text);
             font-weight: 600;
             transition: all 0.3s ease;
+            border-radius: 4px;
         }
 
         .social-link:hover {
@@ -414,12 +420,17 @@
             color: var(--color-text-muted);
             font-size: 14px;
         }
+
+        strong {
+            font-weight: 600;
+            color: var(--color-text);
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="nav-container">
-            <a href="#" class="logo">@username</a>
+            <a href="#" class="logo">@trofimovelijah</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home" class="nav-link active">Главная</a></li>
@@ -453,8 +464,8 @@
                         <div class="stat-label">Лет опыта</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Языков ПО</div>
+                        <div class="stat-number">{{SKILLS_COUNT}}</div>
+                        <div class="stat-label">Навыков</div>
                     </div>
                 </div>
             </div>
@@ -466,13 +477,15 @@
             <h2 class="section-title">Обо мне</h2>
             <div class="about-grid">
                 <div class="about-content">
-                    {{ABOUT_SECTION}}
+                    <h3>Кто я</h3>
+                    {{ABOUT_INTRO}}
                 </div>
                 <div class="about-content">
-                    {{SKILLS_SECTION}}
+                    <h3>Мой фокус</h3>
+                    {{ABOUT_FOCUS}}
                 </div>
             </div>
-            <div class="skill-tags" style="margin-top: 60px;">
+            <div class="skill-tags">
                 {{SKILLS_TAGS}}
             </div>
         </div>
@@ -499,7 +512,7 @@
     <section id="contact" class="section contact-section">
         <div class="container">
             <h2>Давайте работать вместе</h2>
-            <p>Открыт к обсуждению интересных проектов и сотрудничеству</p>
+            <p>{{CONTACT_MESSAGE}}</p>
             <div class="social-links">
                 {{SOCIAL_LINKS}}
             </div>
@@ -534,7 +547,8 @@
                 if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                     const id = section.getAttribute('id');
                     navLinks.forEach(link => link.classList.remove('active'));
-                    document.querySelector(`a[href="#${id}"]`).classList.add('active');
+                    const link = document.querySelector(`a[href="#${id}"]`);
+                    if (link) link.classList.add('active');
                 }
             });
         });

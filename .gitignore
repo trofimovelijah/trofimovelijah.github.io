@@ -13,5 +13,5 @@ venv/
 Thumbs.db
 
 # Можно игнорировать или коммитить index.html (смотри ниже)
-# index.html
+index.html
 

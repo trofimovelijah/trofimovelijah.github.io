@@ -3,15 +3,21 @@ name: Build Portfolio
 on:
   push:
     branches: [main]
+    paths:
+      - 'content/**'
+      - 'templates/**'
+      - 'scripts/**'
+      - '.github/workflows/build.yml'
   pull_request:
     branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -21,15 +27,29 @@ jobs:
       - name: Generate HTML from Markdown
         run: |
           python scripts/generate.py
+          echo "Exit code: $?"
       
-      - name: Commit changes
+      - name: Check if index.html was generated
+        run: |
+          if [ -f index.html ]; then
+            echo "✅ index.html successfully generated"
+            ls -lh index.html
+          else
+            echo "❌ index.html was not generated"
+            exit 1
+          fi
+      
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate index.html from markdown" && git push)
-        
-        # Опционально: можно не коммитить, а просто генерировать
-        # Тогда удали этот шаг и используй:
-        # if: always()
+          git config --local user.name "GitHub Action Bot"
+          
+          if git diff --quiet index.html; then
+            echo "No changes to index.html"
+          else
+            echo "Committing index.html changes..."
+            git add index.html
+            git commit -m "Auto-generate index.html from markdown [skip ci]"
+            git push
+          fi
 
