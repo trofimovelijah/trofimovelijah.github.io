@@ -8,48 +8,65 @@ on:
       - 'templates/**'
       - 'scripts/**'
       - '.github/workflows/build.yml'
-  pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      
+
       - name: Generate HTML from Markdown
         run: |
           python scripts/generate.py
-          echo "Exit code: $?"
-      
-      - name: Check if index.html was generated
-        run: |
-          if [ -f index.html ]; then
-            echo "✅ index.html successfully generated"
-            ls -lh index.html
-          else
-            echo "❌ index.html was not generated"
+          if [ ! -f index.html ]; then
+            echo "❌ ERROR: index.html was not generated!"
             exit 1
           fi
-      
-      - name: Commit and push changes
+
+      - name: Check if index.html was modified
+        id: check_changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          
           if git diff --quiet index.html; then
-            echo "No changes to index.html"
+            echo "unchanged=true" >> $GITHUB_OUTPUT
+            echo "✓ No changes to index.html"
           else
-            echo "Committing index.html changes..."
-            git add index.html
-            git commit -m "Auto-generate index.html from markdown [skip ci]"
-            git push
+            echo "unchanged=false" >> $GITHUB_OUTPUT
+            echo "✓ index.html has been modified"
+            git diff --stat index.html
           fi
+
+      - name: Configure Git
+        if: steps.check_changes.outputs.unchanged == 'false'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.unchanged == 'false'
+        run: |
+          git add index.html
+          git commit -m "Auto-generate index.html from markdown [skip ci]"
+          git push
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
 
