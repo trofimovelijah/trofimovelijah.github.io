@@ -460,7 +460,7 @@
                         <div class="stat-label">открытых проектов</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">безумное множество</div>
+                        <div class="stat-number">18</div>
                         <div class="stat-label">лет опыта</div>
                     </div>
                     <div class="stat">
