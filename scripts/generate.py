@@ -96,14 +96,30 @@ class PortfolioGenerator:
                 intro_html = first_para.group(1).strip()
                 intro_html = MarkdownToHTML.convert(intro_html)
                 result['intro'] = intro_html
+                print(f'   ✓ Введение найдено')
         
-        # Извлекаем "Мой фокус"
-        focus_match = re.search(r'##\s+Мой фокус\n(.*?)(?=##|\Z)', content, re.DOTALL)
-        if focus_match:
-            focus_text = focus_match.group(1).strip()
-            # Конвертируем markdown в HTML
+        # Извлекаем "Мой фокус" или "Фокус деятельности" (ГИБКО)
+        # Поддерживаем разные варианты названия секции
+        focus_patterns = [
+            r'##\s+Мой\s+фокус\n(.*?)(?=##|\Z)',  # "Мой фокус"
+            r'##\s+Фокус\s+деятельности\n(.*?)(?=##|\Z)',  # "Фокус деятельности"
+            r'##\s+Фокус\n(.*?)(?=##|\Z)',  # "Фокус"
+            r'##\s+(?:My\s+)?focus\n(.*?)(?=##|\Z)',  # English variants
+        ]
+        
+        focus_text = None
+        for pattern in focus_patterns:
+            focus_match = re.search(pattern, content, re.IGNORECASE | re.DOTALL)
+            if focus_match:
+                focus_text = focus_match.group(1).strip()
+                print(f'   ✓ Раздел фокуса найден')
+                break
+        
+        if focus_text:
             focus_html = MarkdownToHTML.paragraphs(focus_text)
             result['focus'] = focus_html
+        else:
+            print(f'   ⚠️  Раздел фокуса НЕ найден (проверь имя секции в about.md)')
         
         # Извлекаем навыки
         skills_match = re.search(r'##\s+Навыки\n(.*?)(?=##|\Z)', content, re.DOTALL)
@@ -111,9 +127,12 @@ class PortfolioGenerator:
             skills_text = skills_match.group(1).strip()
             skills = re.findall(r'[-*]\s+(.+?)(?:\n|$)', skills_text)
             result['skills'] = skills
+            print(f'   ✓ Найдено навыков: {len(skills)}')
+        else:
+            print(f'   ⚠️  Навыки НЕ найдены')
         
-        print(f'   ✅ Найдено навыков: {len(result["skills"])}')
         return result
+
     
     def parse_projects(self) -> List[Dict[str, Any]]:
         """Парсит projects.md"""
