@@ -5,6 +5,8 @@ trofimovelijah.github.io/
 ├── .github/
 │   └── workflows/
 │       └── build.yml           # GitHub Actions конфиг
+├── assets/
+│   ├── favicon.svg             # Ярлык для отображения сайта
 ├── content/
 │   ├── about.md                # Обо мне и навыки
 │   ├── projects.md             # Все проекты

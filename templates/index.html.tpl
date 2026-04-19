@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Портфолио - ML & Software Architecture">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>Портфолио - ML & Software Architecture</title>
     <style>
         :root {
@@ -520,7 +521,7 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026. Все права права. ~ Bauhaus дизайн.</p>
+        <p>&copy; 2026. Все права того самое.</p>
     </footer>
 
     <script>
