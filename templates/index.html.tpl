@@ -92,8 +92,38 @@
             border-bottom-color: var(--color-primary);
         }
 
+        .about-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .about-header .section-title {
+            margin-bottom: 0;
+        }
+
+        .about-preview {
+            width: 220px;
+            height: 260px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 4px;
+            display: block;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
-            .nav-links { gap: 20px; font-size: 14px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-header {
+                grid-template-columns: 1fr;
+            }
+            .about-preview {
+                width: 100%;
+                height: 240px;
+                order: -1;
+            }
         }
 
         .container {
@@ -475,7 +505,18 @@
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Обо мне</h2>
+            <div class="about-header">
+                <h2 class="section-title">Обо мне</h2>
+                <img
+                    src="assets/preview.png"
+                    alt="Трофимов Илья"
+                    class="about-preview"
+                    width="220"
+                    height="260"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
             <div class="about-grid">
                 <div class="about-content">
                     <h3>Кто я</h3>
