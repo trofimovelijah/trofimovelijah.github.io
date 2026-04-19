@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио - ML & Software Architecture">
+    <meta name="description" content="Портфолио - System Analyst">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <title>Портфолио - ML & Software Architecture</title>
+    <title>Портфолио - System Analyst</title>
     <style>
         :root {
             --color-bg: #fafafa;
