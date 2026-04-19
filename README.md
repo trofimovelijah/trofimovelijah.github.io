@@ -10,10 +10,10 @@ trofimovelijah.github.io/
 │   ├── projects.md             # Все проекты
 │   ├── resources.md            # Ссылки на ресурсы
 │   └── contact.md              # Контакты и соцсети
-├── templates/
-│   └── index.html.tpl          # HTML шаблон (Bauhaus дизайн)
 ├── scripts/
 │   └── generate.py             # Скрипт для генерации
+├── templates/
+│   └── index.html.tpl          # HTML шаблон (Bauhaus дизайн)
 ├── README.md
 └── .gitignore
 ```

@@ -23,3 +23,5 @@
 - Docker
 - RAG
 - n8n
+- Redis
+- drawio

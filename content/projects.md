@@ -71,3 +71,12 @@
 **Ссылка:** https://gitflic.ru/project/student-practice-mirea-ao-su/ivbo-1224
 **Дата:** 2025
 **Иконка:** 🧑🏻‍🔬
+
+### A Combined Automation Repository Using **n8n**
+
+Собрание готовых воркфлоу для `n8n`, упакованных по директориям с краткими описаниями и инструкциями по импорту и настройке учётных данных.
+
+**Теги:**  n8n, low-code, Git, GoogleDocs, Airtable, Redis, GoogleSheets, Telegram, OpenRouter, Tavily, Supabase, PostgreSQL, Qdrant
+**Ссылка:** https://github.com/trofimovelijah/automagic_in_n8n
+**Дата:** 2025
+**Иконка:** 🧑🏻
