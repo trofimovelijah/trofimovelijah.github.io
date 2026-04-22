@@ -29,7 +29,6 @@
 - LangChain
 - Low-code
 - n8n
-<<<<<<< HEAD
 - ISTQB
 - функциональное тестирование
 - UAT
@@ -40,7 +39,3 @@
 - System Design
 - LabVIEW
 - OWASP
-=======
-- Redis
-- drawio
->>>>>>> 8199b8765205c19cf3de4cc28c7b394b2748d70f
