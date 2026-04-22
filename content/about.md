@@ -12,14 +12,30 @@
 
 ## Навыки
 
-- Системный анализ
+- C4
+- BPMN
 - Camunda
 - User Story
-- plantuml
+- PlantUML
+- SRS
 - QA
 - OpenStack
+- VMware vSphere
 - Linux
 - PostgreSQL
+- ArcGIS
 - Docker
 - RAG
+- LangChain
+- Low-code
 - n8n
+- ISTQB
+- функциональное тестирование
+- UAT
+- FreeIPA
+- GitLab
+- Swagger
+- OpenAPI
+- System Design
+- LabVIEW
+- OWASP

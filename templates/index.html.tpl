@@ -463,10 +463,6 @@
                         <div class="stat-number">18</div>
                         <div class="stat-label">лет опыта</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">{{SKILLS_COUNT}}</div>
-                        <div class="stat-label">Навыков</div>
-                    </div>
                 </div>
             </div>
         </div>
