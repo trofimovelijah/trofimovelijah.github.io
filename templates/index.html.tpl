@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио - ML & Software Architecture">
-    <title>Портфолио - ML & Software Architecture</title>
+    <meta name="description" content="Портфолио - System Analyst">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Портфолио - System Analyst</title>
     <style>
         :root {
             --color-bg: #fafafa;
@@ -213,9 +214,30 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr auto 1fr;
             gap: 60px;
             align-items: start;
+        }
+
+        .about-preview {
+            width: 200px;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .about-preview {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
         .about-content h3 {
@@ -243,10 +265,6 @@
             font-size: 14px;
             font-weight: 500;
             border-radius: 4px;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
         .projects-grid {
@@ -476,6 +494,13 @@
                     <h3>Кто я</h3>
                     {{ABOUT_INTRO}}
                 </div>
+                <img
+                    src="assets/preview.png"
+                    alt="Трофимов Илья"
+                    class="about-preview"
+                    loading="lazy"
+                    decoding="async"
+                >
                 <div class="about-content">
                     <h3>Мой фокус</h3>
                     {{ABOUT_FOCUS}}
@@ -516,12 +541,12 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026. Все права права. ~ Bauhaus дизайн.</p>
+        <p>&copy; 2026. Все права того самое.</p>
     </footer>
 
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -551,4 +576,3 @@
     </script>
 </body>
 </html>
-

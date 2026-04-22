@@ -7,6 +7,7 @@ on:
       - 'content/**'
       - 'templates/**'
       - 'scripts/**'
+      - 'assets/**'
       - '.github/workflows/build.yml'
 
 jobs:
@@ -37,16 +38,25 @@ jobs:
           fi
           echo "✅ index.html generated successfully"
 
-      - name: Check if index.html was modified
+      - name: Copy favicon to root
+        run: |
+          if [ -f assets/favicon.svg ]; then
+            cp assets/favicon.svg favicon.svg
+            echo "✅ favicon.svg copied to root"
+          else
+            echo "⚠️ WARNING: assets/favicon.svg not found, skipping"
+          fi
+
+      - name: Check if files were modified
         id: check_changes
         run: |
-          if git diff --quiet index.html; then
+          if git diff --quiet index.html favicon.svg 2>/dev/null; then
             echo "unchanged=true" >> $GITHUB_OUTPUT
-            echo "✓ No changes to index.html"
+            echo "✓ No changes"
           else
             echo "unchanged=false" >> $GITHUB_OUTPUT
-            echo "✓ index.html has been modified"
-            git diff --stat index.html
+            echo "✓ Files have been modified"
+            git diff --stat
           fi
 
       - name: Configure Git
@@ -59,7 +69,8 @@ jobs:
         if: steps.check_changes.outputs.unchanged == 'false'
         run: |
           git add index.html
-          git commit -m "Auto-generate index.html from markdown [skip ci]"
+          git add favicon.svg 2>/dev/null || true
+          git commit -m "Auto-generate index.html and copy favicon [skip ci]"
           git push
 
       - name: Upload artifact for GitHub Pages
@@ -70,4 +81,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
