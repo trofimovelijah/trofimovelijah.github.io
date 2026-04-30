@@ -288,9 +288,24 @@
             box-shadow: 0 12px 24px rgba(0, 102, 204, 0.15);
         }
 
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
         .project-icon {
             font-size: 32px;
-            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .project-year {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            letter-spacing: 0.5px;
+            opacity: 0.75;
         }
 
         .project-card h3 {

@@ -282,10 +282,14 @@ class PortfolioGenerator:
                 for tag in project.get('tags', [])
             ])
             
+            # СТАЛО:
             projects_html += f'''
-                <div class="project-card">
-                    <div class="project-icon">{project.get('icon', '📦')}</div>
-                    <h3>{project['name']}</h3>
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <div class="project-icon">{project.get('icon', '📦')}</div>
+                                    <span class="project-year">{project.get('date', '')}</span>
+                                </div>
+                                <h3>{project['name']}</h3>
                     <p>{project.get('description', '')}</p>
                     <div class="project-tags">
                         {tags_html}
