@@ -24,7 +24,7 @@
 
 **Теги:** arc42, System Design, C4, ADR, REST API, OpenAPI, AsyncAPI, UML Sequence
 **Ссылка:** [https://docs.google.com](https://docs.google.com/document/d/13ww00pYKDy3GVnZrYfaG_cW3NeLNZKToCGzwBY7UuwY/edit?usp=sharing)
-**Дата:** 2025
+**Дата:** 2026
 **Иконка:** 🏃
 
 ### тг-бот "Master Shake & Margarita" - Development
